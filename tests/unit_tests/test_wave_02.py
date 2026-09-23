@@ -55,3 +55,7 @@ def test_get_item_by_id_no_matching():
     assert item_a in items
     assert item_b in items
     assert item_c in items
+
+def test_debug():
+    item = Item()
+    pass
