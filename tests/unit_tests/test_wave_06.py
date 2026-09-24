@@ -32,7 +32,8 @@ def test_get_no_matching_items_by_category():
     )
 
     items = vendor.get_by_category("Electronics")
-
+    assert len(items) == 0
+    assert items == []
     assert len(items) == 0 
     assert items == []
     # *********************************************************************
@@ -110,7 +111,17 @@ def test_swap_best_by_category():
         my_priority="Clothing",
         their_priority="Decor"
     )
-
+    assert result
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert item_a in tai.inventory
+    assert item_b in tai.inventory
+    assert item_f in tai.inventory
+    assert item_c not in tai.inventory
+    assert item_d in jesse.inventory
+    assert item_e in jesse.inventory
+    assert item_c in jesse.inventory
+    assert item_f not in jesse.inventory
     assert result
     assert len(tai.inventory) == 3
     assert len(jesse.inventory) == 3
@@ -151,7 +162,17 @@ def test_swap_best_by_category_reordered():
         my_priority="Clothing",
         their_priority="Decor"
     )
-
+    assert result
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert item_a in tai.inventory
+    assert item_b in tai.inventory
+    assert item_f in tai.inventory
+    assert item_c not in tai.inventory
+    assert item_d in jesse.inventory
+    assert item_e in jesse.inventory
+    assert item_c in jesse.inventory
+    assert item_f not in jesse.inventory
     assert result
     assert len(tai.inventory) == 3
     assert len(jesse.inventory) == 3
@@ -302,3 +323,4 @@ def test_swap_best_by_category_no_other_match_is_false():
     # - That result is falsy
     # - That tai and jesse's inventories are the correct length
     # - That all the correct items are in tai and jesse's inventories
+    
